@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 2 meta tags *must* come first in the head -->
+    <title>AAD Pod Identity YAML Generator</title>
+    
+    <!-- IMPORTANT!
+        In the two tags below, update path to standard-2.0.3
+        to match the location of your Standard files
+    -->
+    <link href="css/em-standard-2.0.3.min.css" media="all" rel="stylesheet"/>
+    <script type="text/javascript" src="js/vendor/masonry.pkgd.min.js"></script><!-- Masonry layout library  -->
+    <script type="text/javascript" src="AAD_YAML_Gen.js"></script><!-- Masonry layout library  -->
+
+  </head>
+  <body>
+    <header class="em-c-header   " role="banner">
+    <div class="em-l-container em-c-header__inner">
+        <div class="em-c-header__body">
+        <div class="em-c-header__title-container ">
+            <h2 class="em-c-header__title">
+            <a href="#" rel="home" class="em-c-header__title-link">AAD Pod Identity YAML Generator</a>
+            </h2>
+        </div>
+    </div>
+    </header>
+    <main role="main" id="main">
+      <div class="em-l-container">
+        <div class="em-c-page-header   ">
+        <p class="em-c-page-header__desc  em-u-max-width-80">
+            This form will help to generate YAML codes for using Azure Key Vault with AAD Pod Identity on ARO<br>
+            Read more information from <a href="https://appwiki.xom.cloud/docs/Containers/AdvancedOpenshift/AzureKeyVault-Example.html" target="_blank">goto/AppWiki</a>
+        </p>
+        </div>
+
+        <!--------  Azure Key Vault  -------->
+        <fieldset class="em-c-fieldset " tabindex="0">
+          <legend class="em-c-fieldset__legend  em-u-margin-bottom-none">Azure Key Vault</legend>
+          <div id="divAKV" class="em-c-field em-u-max-width-30  em-u-margin-bottom-half">
+            <label for="txtAKV" class="em-c-field__label">
+                <span aria-hidden="true" class="em-c-field__required">*</span>
+                Name
+            </label>
+            <div class="em-c-field__body">
+                <input
+                type="text"
+                id="txtAKV"
+                name=""
+                class="em-c-input em-js-input"
+                placeholder="Azure Key Vault Name"
+                aria-describedby="textinput-note-:r0:"
+                aria-required="false"
+                value=""
+                required=""
+                />
+            </div>
+          </div>
+          <div class="em-c-table-object  em-u-margin-bottom-none">
+            <div class="em-c-table-object__body">
+              <div class="em-c-table-object__body-inner">
+                <table class="em-c-table  em-c-table--condensed" role="table">
+                  <thead class="em-c-table__header ">
+                    <tr class="em-c-table__header-row">
+                      <th scope="col" class="em-c-table__header-cell ">
+                        Secret Name in AKV
+                      </th>
+                      <th scope="col" class="em-c-table__header-cell ">
+                        Environment Variable Name in Pod (Optional)
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="em-c-table__body">
+                    <tr class="em-c-table__row   ">
+                      <td class="em-c-table__cell em-js-cell em-js-cell-editable">
+                        <div class="em-c-field__body">
+                          <input
+                          type="text"
+                          id="secret_name1"
+                          name=""
+                          class="em-c-input em-js-input"
+                          placeholder="secret name"
+                          aria-describedby="textinput-note-:r0:"
+                          aria-required="false"
+                          value=""
+                          />
+                        </div>
+                      </td>
+                      <td class="em-c-table__cell em-js-cell em-js-cell-editable">
+                        <div class="em-c-field__body">
+                          <input
+                          type="text"
+                          id="env_name1"
+                          name=""
+                          class="em-c-input em-js-input"
+                          placeholder="can be same as secret name"
+                          aria-describedby="textinput-note-:r0:"
+                          aria-required="false"
+                          value=""
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="em-c-table__row   ">
+                      <td class="em-c-table__cell em-js-cell em-js-cell-editable">
+                        <div class="em-c-field__body">
+                          <input
+                          type="text"
+                          id="secret_name2"
+                          name=""
+                          class="em-c-input em-js-input"
+                          placeholder="secret name"
+                          aria-describedby="textinput-note-:r0:"
+                          aria-required="false"
+                          value=""
+                          />
+                        </div>
+                      </td>
+                      <td class="em-c-table__cell em-js-cell em-js-cell-editable">
+                        <div class="em-c-field__body">
+                          <input
+                          type="text"
+                          id="env_name2"
+                          name=""
+                          class="em-c-input em-js-input"
+                          placeholder="can be same as secret name"
+                          aria-describedby="textinput-note-:r0:"
+                          aria-required="false"
+                          value=""
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="em-c-table__row   ">
+                      <td class="em-c-table__cell em-js-cell em-js-cell-editable">
+                        <div class="em-c-field__body">
+                          <input
+                          type="text"
+                          id="secret_name3"
+                          name=""
+                          class="em-c-input em-js-input"
+                          placeholder="secret name"
+                          aria-describedby="textinput-note-:r0:"
+                          aria-required="false"
+                          value=""
+                          />
+                        </div>
+                      </td>
+                      <td class="em-c-table__cell em-js-cell em-js-cell-editable">
+                        <div class="em-c-field__body">
+                          <input
+                          type="text"
+                          id="env_name3"
+                          name=""
+                          class="em-c-input em-js-input"
+                          placeholder="can be same as secret name"
+                          aria-describedby="textinput-note-:r0:"
+                          aria-required="false"
+                          value=""
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="em-c-table__row   ">
+                      <td class="em-c-table__cell em-js-cell em-js-cell-editable">
+                        <div class="em-c-field__body">
+                          <input
+                          type="text"
+                          id="secret_name4"
+                          name=""
+                          class="em-c-input em-js-input"
+                          placeholder="secret name"
+                          aria-describedby="textinput-note-:r0:"
+                          aria-required="false"
+                          value=""
+                          />
+                        </div>
+                      </td>
+                      <td class="em-c-table__cell em-js-cell em-js-cell-editable">
+                        <div class="em-c-field__body">
+                          <input
+                          type="text"
+                          id="env_name4"
+                          name=""
+                          class="em-c-input em-js-input"
+                          placeholder="can be same as secret name"
+                          aria-describedby="textinput-note-:r0:"
+                          aria-required="false"
+                          value=""
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot class="em-c-table__footer">
+                    <tr class="em-c-table__footer-row">
+                      <td class="em-c-table__footer-cell">Alphanumeric characters and dash</td>
+                      <td class="em-c-table__footer-cell">Uppercase alphanumeric characters and underscore</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <!--------  Azure Key Vault  -------->
+
+        <!--------  Azure Managed Identity  -------->
+        <fieldset class="em-c-fieldset  em-u-margin-top-double" tabindex="0">
+          <legend class="em-c-fieldset__legend  em-u-margin-bottom-none">Azure Managed Identity</legend>
+          <div class="em-l-grid em-l-grid--2up">
+            <div class="em-l-grid__item">
+              <div class="em-c-field   em-u-max-width-30">
+                <label for="txtMngIdName" class="em-c-field__label">
+                  <span aria-hidden="true" class="em-c-field__required">*</span>
+                  Name
+                </label>
+                <div class="em-c-field__body">
+                  <input
+                    type="text"
+                    id="txtMngIdName"
+                    class="em-c-input em-js-input"
+                    placeholder="Managed Identity Name"
+                    aria-describedby="textinput-note-:r2r:"
+                    value=""
+                    required=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="em-l-grid__item">
+              <div class="em-c-field   em-u-max-width-30">
+                <label for="txtMngIdClientID" class="em-c-field__label">
+                  <span aria-hidden="true" class="em-c-field__required">*</span>
+                  Client ID
+                </label>
+                <div class="em-c-field__body">
+                  <input
+                    type="text"
+                    id="txtMngIdClientID"
+                    class="em-c-input em-js-input"
+                    placeholder="ex. 34e56928-cbf7-435c-ac73-f19ece8cd8dd"
+                    aria-describedby="textinput-note-:r2r:"
+                    value=""
+                    required=""
+                  />
+                </div>
+                <div class="em-c-field__note" id="textinput-note-:r2r:">
+                  GUID format : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+                </div>
+              </div>
+            </div>
+            <div class="em-c-field  em-u-width-100 em-u-margin-left-half">
+              <label for="txtMngIdResourceID" class="em-c-field__label">
+                <span aria-hidden="true" class="em-c-field__required">*</span>
+                Resource ID
+              </label>
+              <div class="em-c-field__body">
+                <input
+                  type="text"
+                  id="txtMngIdResourceID"
+                  class="em-c-input em-js-input"
+                  placeholder="/subscriptions/{SUBSCRIPTION_ID}/resourcegroups/{MANAGED_IDENTITY_RESOURCE_GROUP}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{MANAGED_IDENTITY_NAME}"
+                  aria-describedby="textinput-note-:r2r:"
+                  value=""
+                  required=""
+                />
+              </div>
+              <div class="em-c-field__note" id="textinput-note-:r2r:">
+                /subscriptions/{SUBSCRIPTION_ID}/resourcegroups/{MANAGED_IDENTITY_RESOURCE_GROUP}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{MANAGED_IDENTITY_NAME}
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <!--------  Azure Managed Identity  -------->
+
+        <!--------  ARO Cluster  -------->
+        <fieldset class="em-c-fieldset  em-u-margin-top-double" tabindex="0">
+          <legend class="em-c-fieldset__legend  em-u-margin-bottom-none">ARO Cluster</legend>
+          <div class="em-l-grid em-l-grid--2up">
+            <div class="em-l-grid__item">
+              <div class="em-c-field  ">
+                <label for="selAROCluster" class="em-c-field__label" id="labelAROCluster">ARO Cluster</label>
+                <div class="em-c-field__body">
+                  <select
+                    class="em-c-select"
+                    id="selAROCluster"
+                    name="selAROCluster"
+                    aria-labelledby="labelSelect"
+                    aria-describedby="descSelect"
+                  >
+                    <optgroup label="ARO Cluster">
+                      <option value="ARO-D-P">Disconnected ARO Production</option>
+                      <option selected="selected" value="ARO-D-NP">Disconnected ARO Non-Production</option>
+                      <option value="ARO-C-P">Connected ARO Production</option>
+                      <option value="ARO-C-NP">Connected ARO Non-Production</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="em-l-grid__item">
+              <div class="em-c-field   em-u-max-width-30">
+                <label for="txtNamespace" class="em-c-field__label">
+                  <span aria-hidden="true" class="em-c-field__required">*</span>
+                  Namespace
+                </label>
+                <div class="em-c-field__body">
+                  <input
+                    type="text"
+                    id="txtNamespace"
+                    class="em-c-input em-js-input"
+                    placeholder="Namespace"
+                    aria-describedby="textinput-note-:r2r:"
+                    value=""
+                    required=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <!--------  ARO Cluster  -------->
+        
+        <button class="em-c-btn em-c-btn--primary em-u-margin-top-double em-u-margin-bottom-double" onclick="generateYAML();">
+          <span class="em-c-btn__text">Generate YAML</span>
+        </button>
+      </div>
+
+      <!--------  YAML  -------->
+      <div class="em-l-container em-u-margin-top-double">
+        <div class="em-c-field  ">
+          <label for="txtSecretProviderClass" class="em-c-field__label">SecretProviderClass</label>
+          <div class="em-c-field__body">
+            <textarea
+              class="em-c-textarea  em-u-font-size-small-2"
+              id="txtSecretProviderClass"
+              name=""
+              placeholder="Placeholder"
+              rows="10"
+              aria-describedby="Textarea-note"
+              aria-required="false"
+              style="font-family: Courier, monospace"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="em-c-field  ">
+          <label for="txtAzureIdentity" class="em-c-field__label">AzureIdentity & AzureIdentityBinding</label>
+          <div class="em-c-field__body">
+            <textarea
+              class="em-c-textarea  em-u-font-size-small-2"
+              id="txtAzureIdentity"
+              name=""
+              placeholder="Placeholder"
+              rows="10"
+              aria-describedby="Textarea-note"
+              aria-required="false"
+              style="font-family: Courier, monospace"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="em-c-field  ">
+          <label for="txtTestPod" class="em-c-field__label">Test Pod</label>
+          <div class="em-c-field__body">
+            <textarea
+              class="em-c-textarea  em-u-font-size-small-2"
+              id="txtTestPod"
+              name=""
+              placeholder="Placeholder"
+              rows="10"
+              aria-describedby="Textarea-note"
+              aria-required="false"
+              style="font-family: Courier, monospace"
+            ></textarea>
+          </div>
+          <div class="em-c-field__note em-u-max-width-80" id="Textarea-note2">
+            This YAML code will create a pod which has Environment Variables, and create secret files in folder /mnt/secrets-store.
+          </div>
+        </div>
+      </div>
+      <!--------  YAML  -------->
+    </main>
+
+    <script type="text/javascript" src="js/em-standard-2.0.3.min.js"></script>
+  </body>
+</html>
